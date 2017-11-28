@@ -12,7 +12,13 @@
         { id: 3, name: 'Irina', surname: 'Plushkina' }
     ];
 
+    let fullName = [];
+    for ( user of users ){
+        let {name, surname} = user;
+        fullName.push(`${name} ${surname}`);
+    }
 
+    
 }
 
 /*
@@ -28,6 +34,13 @@
         { id: 3, age: 18, name: 'Irina', surname: 'Plushkina' }
     ];
 
+
+    function checkAge(age){
+        let temp = [];
+        return temp = users.filter( user => user.age > age);
+    }
+
+    const older = checkAge(15);
 
 }
 
@@ -60,7 +73,15 @@
         amount: 245
     }];
 
+    function getAvarageSumm(){
 
+        const summGeneral = orders.reduce( (summ, current)=>{
+            return summ + current.amount;
+        }, 0);
+        return summGeneral/orders.length;
+    };
+
+    const averageSumm = getAvarageSumm();
 }
 
 
@@ -92,5 +113,18 @@
         interests: ['computers', 'food', 'math']
     }];
 
+    function sort(){
+        let EX = {};
+
+        for ( user of users ){
+            let {interests} = user;
+            interests.forEach( item =>{
+                EX[item] = !EX.hasOwnProperty(item)? 1 : +EX[item] +1;
+            })
+        }
+        return EX;
+    }
+
+    const EX = sort();
 
 }

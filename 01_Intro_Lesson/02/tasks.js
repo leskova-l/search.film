@@ -8,7 +8,20 @@
 */
 
 {
+    const numbers = [1, [2, 3, [4, 5], [2, 4]], 3, [[2, [3, [1]], 4], [3]]];   var out = [];
+    function convert(arr){
 
+
+        arr.forEach( item => {
+            if (typeof item === "object") {
+                return convert(item)
+            }
+            out.push(item);
+        }, );
+
+        return out;
+    }
+    const result = convert(numbers);
 }
 
 /*
@@ -25,7 +38,23 @@
 */
 
 {
+    function convertKey(obj, sep) {
+    let newObj = {};
+    for ( key in obj){
+        if (key.search(sep) != -1){
+            let arrKey = key.split(sep);
+            let temp = arrKey.reduce( (prev, current) => 																									prev.toLowerCase()+current[0].toUpperCase()+
+            current.slice(1).toLowerCase());
+            newObj[temp] = obj[key];
+        } else {
+            newObj[key.toLowerCase()]=obj[key];
+        }
+    }
 
+    return newObj;
+}
+    const out1 = convertKey({ user_name: 'shar', is_logged_in: true }, '_');
+    const out2 = convertKey({ 'user NAME': 'shar', TYPE: true }, ' ');
 }
 
 /*
@@ -33,7 +62,7 @@
  * Усовершенствуйте функцию из задания выше так,
  * чтобы она работала и для вложенных структур тоже
  * EX:
- * in  : { all-users: [{ user_name: 'shar', info: { full_description: '42' } }] }
+ * in  : { all_users: [{ user_name: 'shar', info: { full_description: '42' } }] }
  * out : { allUsers: [{ userName: 'shar', info: { fullDescription: '42' } }] }
  *
  * P.S. Постарайтесь переиспользовать общую логику
@@ -41,4 +70,22 @@
 
 {
 
+    function convertKey(obj, sep) {
+        let newObj = {};
+        for ( key of obj){
+            if (key.search(sep) != -1){
+                let arrKey = key.split(sep);
+                let temp = arrKey.reduce( (prev, current) => 																									prev.toLowerCase()+current[0].toUpperCase()+
+                current.slice(1).toLowerCase());
+                newObj[temp] = obj[key];
+            } else {
+                newObj[key.toLowerCase()]=obj[key];
+            }
+        }
+
+        return newObj;
+    }
+
+    const obj1 = { 'all-users': [{ user_name: 'shar', info: { full_description: '42' } }] };
+    convertKey(obj1, '_');
 }
