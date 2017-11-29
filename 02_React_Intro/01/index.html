@@ -12,7 +12,26 @@
     <div id="root"></div>
 
     <script>
-        /* YOUR CODE HERE */
+        const content = {
+            title: 'Title',
+            author: 'Author',
+            text: 'Lorem Lorem Inner Text'
+        };
+
+        const Article = React.createClass({
+            render() {
+                return React.createElement('div', {},
+                    React.createElement('h3', {}, this.props.title + "!"),
+                    React.createElement('p', {}, "by " + this.props.author ),
+                    React.createElement('p', {}, this.props.text)
+                );
+            }
+        });
+
+        ReactDOM.render(
+            React.createElement(Article, { title: content.title, author: content.author, text: content.text }),
+            document.getElementById('root')
+        );
     </script>
 </body>
 </html>

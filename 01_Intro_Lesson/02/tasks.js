@@ -116,10 +116,10 @@ function* fetchGen (){
 
     const req = yield  fetch('https://anapioficeandfire.com/api/characters/2') // має повернути проміс
     // const req1 = yield  fetch('https://anapioficeandfire.com/api/characters/3')
-    // console.log(req); // отрива із промісу в then
+    console.log(req); // отрива із промісу в then
     const post = yield req.json();
 
-    // console.log('post', post);
+    console.log('post', post);
     return post;
 }
 
@@ -133,6 +133,7 @@ function run(generator) {
     const iterator = generator();
 
     function iterate({ value, done }) {
+        console.log(value);
         if( done ) return value;
 
         return value.then( data => {

@@ -13,7 +13,29 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        /* YOUR CODE HERE */
+        const content = {
+            title: 'Title',
+            author: 'Author',
+            text: 'Lorem Lorem Inner Text'
+        };
+
+       const Article = React.createClass({
+           render(){
+               return(
+                   <div>
+                       <h3 className="title">{this.props.title}</h3>
+                       <p>by {this.props.author}</p>
+                       <p>{this.props.text}</p>
+                   </div>
+               )
+           }
+       });
+
+       ReactDOM.render(<Article
+               title = {content.title}
+               author = {content.author}
+               text = {content.text}
+       />, document.getElementById('root'));
     </script>
 </body>
 </html>
