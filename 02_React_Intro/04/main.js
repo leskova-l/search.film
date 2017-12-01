@@ -106,6 +106,8 @@ const Feed = React.createClass({
                             avatar={tweet.avatar}
                             likes={tweet.likes}
                             retweets={tweet.retweets}
+                            isLiked = {tweet.isLiked}
+                            isRetweeted = {tweet.isRetweeted}
                         />
                     )
                 }
