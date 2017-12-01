@@ -176,5 +176,56 @@ const STUDENTS = [
         email: "knplink@gmail.com"
     }
 ];
+const Member = React.createClass({
+    render(){
+        const {
+            slack ,
+            name ,
+            avatar,
+            github,
+            facebook,
+            email,
+        } = this.props;
+        return (
+            <div className="member-item" >
+                <img src={avatar} alt={name} width={100} height={100}/>
+                <h3>{slack}</h3>
+                <div>Email:<a href={`mailto:${email}`}>{email}</a></div>
+                <p className="member-name">{name}</p>
+                <ul className="social">
+                    <li><a href={facebook}>facebook</a></li>
+                    <li><a href={github}>github</a></li>
+                </ul>
+            </div>
+        )
+    }
+});
+
+const Group = React.createClass({
+    render(){
+        return (
+            <div>
+                {
+                    STUDENTS.map( (item, i) =>
+                        <Member
+                            key = {i}
+                            slack = {item.slack}
+                            name = {item.name}
+                            avatar = {item.avatar}
+                            github = {item.github}
+                            facebook = {item.facebook}
+                            email = {item.email}
+                        />
+                    )
+                }
+            </div>
+        )
+    }
+});
+
+
+ReactDOM.render(<Group />,
+    document.getElementById('root')
+);
 
 /* YOUR CODE HERE */
