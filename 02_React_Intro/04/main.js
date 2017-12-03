@@ -1,3 +1,7 @@
+
+/**
+ * Не змогла зрозіміти task 4.1, властивість добавила, а що з нею робити?
+ * */
 const TWEETS = [
     {
         id: 1,
@@ -44,6 +48,40 @@ const TWEETS = [
 ];
 
 const Tweet = React.createClass({
+    getInitialState(){
+        const {likes, retweets} = this.props;
+        return{
+            likes: likes,
+            retweets: retweets,
+            font: this.recalculateFont(likes, retweets)
+
+        }
+    },
+
+    recalculateFont(likes, retweets){
+        let font;
+        if ((likes + retweets) <= 100 ) {
+            font = 16;
+        } else if ((likes + retweets) > 1000 ){
+            font = 22;
+        } else {
+            font = 18;
+        }
+        return font;
+    },
+
+    handleLikes(){
+        this.setState({
+            likes: this.state.likes+1,
+            font:  this.recalculateFont( this.state.likes+1, this.state.retweets)
+        });
+    },
+    handleRetweets(){
+        this.setState({
+            retweets: this.state.retweets+1,
+            font:  this.recalculateFont( this.state.likes, this.state.retweets+1)
+        });
+    },
     render() {
         const {
             avatar,
@@ -55,7 +93,7 @@ const Tweet = React.createClass({
         } = this.props;
 
         return (
-            <div className="tweet">
+            <div className="tweet" style={{fontSize: this.state.font}}>
                 <img className="tweet-avatar" src={avatar} />
 
                 <div className="tweet-body">
@@ -77,13 +115,13 @@ const Tweet = React.createClass({
                     }
 
                     <div className="tweet-stats">
-                        <div className="tweet-retweets">
+                        <div className="tweet-retweets" onClick={this.handleRetweets}>
                             <i className="tweet-stat-icon fa fa-retweet" />
-                            {retweets || null}
+                            {this.state.retweets || null}
                         </div>
-                        <div className="tweet-likes">
+                        <div className="tweet-likes" onClick={this.handleLikes}>
                             <i className="tweet-stat-icon fa fa-heart" />
-                            {likes || null}
+                            {this.state.likes || null}
                         </div>
                     </div>
                 </div>
@@ -106,8 +144,6 @@ const Feed = React.createClass({
                             avatar={tweet.avatar}
                             likes={tweet.likes}
                             retweets={tweet.retweets}
-                            isLiked = {tweet.isLiked}
-                            isRetweeted = {tweet.isRetweeted}
                         />
                     )
                 }
