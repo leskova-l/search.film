@@ -8,20 +8,24 @@
 */
 
 {
-    const numbers = [1, [2, 3, [4, 5], [2, 4]], 3, [[2, [3, [1]], 4], [3]]];   var out = [];
-    function convert(arr){
+    const numbers = [1, [2, 3, [4, 5], [2, 4]], 3, [[2, [3, [1]], 4], [3]]];
 
+    function getConvertedArray(arr, out = []) {
 
-        arr.forEach( item => {
-            if (typeof item === "object") {
-                return convert(item)
+        arr.forEach( item =>{
+
+            if ( Array.isArray(item) ) {
+                getConvertedArray(item, out)
+            } else {
+                out.push(item);
             }
-            out.push(item);
-        }, );
+        });
 
         return out;
     }
-    const result = convert(numbers);
+
+    console.log(getConvertedArray(numbers));
+
 }
 
 /*
@@ -53,8 +57,27 @@
 
     return newObj;
 }
-    const out1 = convertKey({ user_name: 'shar', is_logged_in: true }, '_');
+
+
+    const out1 = convertKey({ user_name: 'shar', is_pogged_pn: true }, '_');
     const out2 = convertKey({ 'user NAME': 'shar', TYPE: true }, ' ');
+
+
+    function getCamelCaseObj(obj, sep, sorted = {}){
+
+        for ( key in obj ){
+           // key.replace(`/${sep}/g`,  function (key) {
+           //      console.log(key);
+           //  });
+
+            console.log(key.replace(`/_/g`, ''));
+            // const temp =
+        }
+
+        return sorted;
+    }
+
+    console.log(getCamelCaseObj( {user_name: 'shar', is_pogged_pn: true }, '_'));
 }
 
 /*

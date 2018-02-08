@@ -17,8 +17,6 @@
         let {name, surname} = user;
         fullName.push(`${name} ${surname}`);
     }
-
-    
 }
 
 /*
@@ -113,16 +111,19 @@
         interests: ['computers', 'food', 'math']
     }];
 
-    function sort(){
-        let EX = {};
+    function sortInterests(arr){
 
-        for ( user of users ){
-            let {interests} = user;
-            interests.forEach( item =>{
-                EX[item] = !EX.hasOwnProperty(item)? 1 : +EX[item] +1;
-            })
-        }
-        return EX;
+        const interests = arr.map( item => {
+            return {
+                `${[item.name]} ${[item.surname]}` = item.interests
+            }
+        });
+
+        const obj = interests.reduce( (prev, current) =>{
+            console.log(current);
+            return {}
+        },{});
+
     }
 
     const EX = sort();

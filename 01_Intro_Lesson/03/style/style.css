@@ -1,0 +1,13 @@
+section{
+    margin-top: 100px;
+}
+table thead {
+    cursor: pointer;
+}
+table thead .active{
+    background: #cecece;
+}
+
+table thead .asc .glyphicon-arrow-down{
+    transform: scale(-1);
+}

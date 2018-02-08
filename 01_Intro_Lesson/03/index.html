@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Document</title>
+</head>
+<body>
+<main class="container">
+
+    <section class="row">
+        <div class="col-6">
+            <form>
+                <div class="form-group">
+                    <label for="search">Для пошуку введіть  назву фільма</label>
+                    <input type="text" class="form-control" name="movie" id="search">
+                </div>
+                <button type="submit" class="btn btn-primary">find</button>
+            </form>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col" data-type='int' data-key="id" class="active"><i class="glyphicon glyphicon-arrow-down"></i>#</th>
+                    <th scope="col" data-type='str' data-key="title"><i class="glyphicon glyphicon-arrow-down"></i>Title</th>
+                    <th scope="col" data-type='str' data-key="lang"><i class="glyphicon glyphicon-arrow-down"></i>Language</th>
+                    <th scope="col" data-type='int' data-key="popularity"><i class="glyphicon glyphicon-arrow-down"></i>Popularity Index</th>
+                    <th scope="col" data-type='int' data-key="vote"><i class="glyphicon glyphicon-arrow-down"></i>Votes Count</th>
+                    <th scope="col" data-type='int' data-key="rating"><i class="glyphicon glyphicon-arrow-down"></i>Rating</th>
+                    <th scope="col" data-type='date' data-key="date"><i class="glyphicon glyphicon-arrow-down"></i>Release Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+<script src="tasks.js"></script>
+</body>
+</html>
